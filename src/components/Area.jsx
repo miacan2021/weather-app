@@ -9,15 +9,13 @@ backdrop-filter: blur( 9px );
 border-radius: 10px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
 `
-const Icon = (props) => {
-    const source = `../icons/${props.num}.svg`
 
+const Area = ({area}) => {
     return (
-        <Glassbg className="w-56 h-56 flex flex-col items-center justify-center">
-           <img src={source} alt="weather icon" className="w-7/12" />
-            <p className="text-2xl tracking-wider">{props.weather}</p>
+        <Glassbg className="w-96 h-28 flex items-center justify-center">
+            <h1 className="text-center text-4xl tracking-widest uppercase">{area}</h1>
         </Glassbg>
     )
 }
 
-export default Icon
+export default Area

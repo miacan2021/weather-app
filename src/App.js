@@ -3,11 +3,16 @@ import './App.css';
 import axios from 'axios';
 import Icon from './components/Icon';
 import Form from './components/Form';
+import Temp from './components/Temp';
+import Area from './components/Area';
+import HL from './components/HL';
+
 
 
 function App() {
   const [state, setState] = useState({
     temp: '',
+    feel:'',
     cityName: '',
     weather: '',
     high: '',
@@ -31,6 +36,7 @@ function App() {
     axios(url).then((response) => {
       setState({
         temp: response.data.main.temp,
+        feel: response.data.main.feels_like,
         weather: response.data.weather[0].description,
         high: response.data.main.temp_max,
         low: response.data.main.temp_min,
@@ -42,20 +48,20 @@ function App() {
 
 
   return (
-    <div className="h-screen w-screen bg-cover bg-no-repeat bg-fixed object-cover bg-center" 
+    <div className="h-screen w-screen bg-cover bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
     style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
      <div className="pt-10">
      <Form searchCity={searchCity} />
      </div>
-      {state.cityName && (<p>
-         {state.cityName} 
-          temp:{state.temp}
-          high:{state.high}
-          low:{state.low}
-          weather:{state.weather}
-          icon: {state.icon}
-          </p>)}
-          <Icon num={state.icon}/>
+      {state.cityName && (
+        <div className="grid grid-col-2 grid-rows-4 lg:grid-cols-3 lg:grid-rows-3 w-8/12 m-auto items-center">
+          <Area area={state.cityName} />
+          <Icon num={state.icon} weather={state.weather}/>
+          <HL high={state.high} low={state.low} />
+          <Temp temp={state.temp} feel={state.feel} />
+        </div>
+       )}
+        
     </div>
   );
 }
