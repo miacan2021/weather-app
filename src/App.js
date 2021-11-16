@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Icon from './components/Icon';
-import Content from './components/Content';
+import Form from './components/Form';
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
     event.preventDefault()
     const updateCity = document.querySelector('#city').value
     getCityWeather(updateCity)
+    document.querySelector('#city').value = ''
   }
 
   const getCityWeather = (city) => {
@@ -41,8 +42,11 @@ function App() {
 
 
   return (
-    <div className="w-screen h-screen bg-cover bg-no-repeat object-cover bg-center flex items-center justify-center" style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
-      <Content searchCity={searchCity} />
+    <div className="h-screen w-screen bg-cover bg-no-repeat bg-fixed object-cover bg-center" 
+    style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
+     <div className="pt-10">
+     <Form searchCity={searchCity} />
+     </div>
       {state.cityName && (<p>
          {state.cityName} 
           temp:{state.temp}

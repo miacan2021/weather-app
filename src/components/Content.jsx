@@ -15,10 +15,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 const Content = (props) => {
     return (
         <Glassbg className="w-8/12 h-5/6">
-         <form onSubmit={props.searchCity}>
-        <input type="text" name="city" id="city" placeholder="Enter a city name" />
-        <button>GO</button>
-      </form>
+        
         </Glassbg>
     )
 }
