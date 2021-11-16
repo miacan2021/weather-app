@@ -48,20 +48,21 @@ function App() {
 
 
   return (
-    <div className="h-screen w-screen bg-cover bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
+    <div className="h-screen w-screen bg-cover overflow-hidden bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
     style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
-     <div className="pt-10">
+     <div className="pt-10 max-w-10/12">
      <Form searchCity={searchCity} />
      </div>
+     <div className="max-w-10/12">
       {state.cityName && (
-        <div className="grid grid-col-2 grid-rows-4 lg:grid-cols-3 lg:grid-rows-3 w-8/12 m-auto items-center">
+        <div className="grid grid-col-2 grid-rows- w-7/12 h-4/6 mx-auto my-6 items-stretch gap-2 justify-items-stretch">
           <Area area={state.cityName} />
-          <Icon num={state.icon} weather={state.weather}/>
-          <HL high={state.high} low={state.low} />
           <Temp temp={state.temp} feel={state.feel} />
+          <Icon num={state.icon} weather={state.weather} />
+          <HL high={state.high} low={state.low} />
         </div>
        )}
-        
+        </div>
     </div>
   );
 }

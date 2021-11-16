@@ -13,8 +13,8 @@ const Icon = (props) => {
     const source = `../icons/${props.num}.svg`
 
     return (
-        <Glassbg className="w-56 h-56 flex flex-col items-center justify-center">
-           <img src={source} alt="weather icon" className="w-7/12" />
+        <Glassbg className="flex flex-col items-center justify-center p-3 col-span-1 row-span-3">
+           <img src={source} alt="weather icon" className="w-6/12" />
             <p className="text-2xl tracking-wider">{props.weather}</p>
         </Glassbg>
     )

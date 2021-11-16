@@ -12,10 +12,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 const Area = ({area}) => {
     return (
-        <Glassbg className="w-96 h-28 flex items-center justify-center">
+        <Glassbg className="h-20 flex flex-col items-center justify-center col-span-2 row-span-1 ">
             <h1 className="text-center text-4xl tracking-widest uppercase">{area}</h1>
+        
         </Glassbg>
     )
 }
-
 export default Area

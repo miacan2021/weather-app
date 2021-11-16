@@ -12,7 +12,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 const Temp = ({temp, feel}) => {
     return (
-        <Glassbg className=" w-72 h-72 flex flex-col items-center justify-around p-3">
+        <Glassbg className="flex flex-col items-center justify-around p-5 col-span-1 row-span-4">
             <h2 className="uppercase text-center text-2xl tracking-wider">Current Temp</h2>
             <h1 className="text-center text-7xl tracking-wider">{temp}°</h1>
             <h2 className="uppercase text-center text-2xl tracking-wider">feels like</h2>
