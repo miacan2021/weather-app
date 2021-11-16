@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import Icon from './components/Icon';
+import Content from './components/Content';
+
 
 function App() {
   const [state, setState] = useState({
@@ -9,12 +12,17 @@ function App() {
     weather: '',
     high: '',
     low: '',
+    icon:''
   })
 
+  useEffect(() => {
+    getCityWeather('vancouver')
+  }, [])
+ 
  const searchCity = (event) => {
     event.preventDefault()
-    const city = document.querySelector('#city').value
-    getCityWeather(city)
+    const updateCity = document.querySelector('#city').value
+    getCityWeather(updateCity)
   }
 
   const getCityWeather = (city) => {
@@ -26,25 +34,24 @@ function App() {
         high: response.data.main.temp_max,
         low: response.data.main.temp_min,
         cityName: response.data.name,
+        icon: response.data.weather[0].icon
       })
     })
   }
 
 
   return (
-    <div className="App">
-      <h1>weather app</h1>
-      <form onSubmit={searchCity}>
-        <input type="text" name="city" id="city" placeholder="Enter a city name" />
-        <button>GO</button>
-      </form>
+    <div className="w-screen h-screen bg-cover bg-no-repeat object-cover bg-center flex items-center justify-center" style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
+      <Content searchCity={searchCity} />
       {state.cityName && (<p>
          {state.cityName} 
           temp:{state.temp}
           high:{state.high}
           low:{state.low}
           weather:{state.weather}
+          icon: {state.icon}
           </p>)}
+          <Icon num={state.icon}/>
     </div>
   );
 }
