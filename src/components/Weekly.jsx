@@ -46,7 +46,7 @@ const Weekly = (props) => {
             return(
               <Glassbg className="flex flex-col items-center justify-center p-2" key={i}>
               <img key={w.icon+i} src={source} alt="weather icon" className="w-6/12" />
-              <p key={w.date+i}>{time.getMonth()}/{time.getDate()}</p>
+              <p key={w.date+i}>{time.toLocaleDateString().slice(0,5)}</p>
               <p key={w.temp+i}>{w.temp}°</p>
               <p key={w.weather+i}>{w.weather}</p>
               </Glassbg>
