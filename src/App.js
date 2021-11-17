@@ -6,7 +6,7 @@ import Form from './components/Form';
 import Temp from './components/Temp';
 import Area from './components/Area';
 import HL from './components/HL';
-
+import Weekly from './components/Weekly';
 
 
 function App() {
@@ -17,9 +17,10 @@ function App() {
     weather: '',
     high: '',
     low: '',
-    icon:''
+    icon:'',
+    lon:'',
+    lat:'',
   })
-
   useEffect(() => {
     getCityWeather('vancouver')
   }, [])
@@ -41,28 +42,35 @@ function App() {
         high: response.data.main.temp_max,
         low: response.data.main.temp_min,
         cityName: response.data.name,
-        icon: response.data.weather[0].icon
+        icon: response.data.weather[0].icon,
+        lon: response.data.coord.lon,
+        lat: response.data.coord.lat
       })
+ 
     })
   }
 
 
   return (
-    <div className="h-screen w-screen bg-cover overflow-hidden bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
+    <div className="h-screen w-screen bg-cover overflow-scroll  bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
     style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
-     <div className="pt-10 max-w-10/12">
+     <div className="max-w-screen-md md:max-w-7xl flex flex-col items-center justify-center m-auto">
+     <div className="pt-10 w-full md:w-5/6 lg:w-4/6">
      <Form searchCity={searchCity} />
      </div>
-     <div className="max-w-10/12">
-      {state.cityName && (
-        <div className="grid grid-col-2 grid-rows- w-7/12 h-4/6 mx-auto my-6 items-stretch gap-2 justify-items-stretch">
+     {state.cityName && (
+        <div className="grid grid-col-2 grid-rows-5 w-11/12 md:w-10/12 md:h-5/6 lg:w-7/12 lg:h-4/6 my-6 items-stretch gap-2 justify-items-stretch mx-auto">
           <Area area={state.cityName} />
           <Temp temp={state.temp} feel={state.feel} />
           <Icon num={state.icon} weather={state.weather} />
           <HL high={state.high} low={state.low} />
+          <Weekly lon={state.lon} lat={state.lat} />
         </div>
        )}
-        </div>
+     </div>
+    
+    
+  
     </div>
   );
 }

@@ -12,10 +12,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 
 const Form = (props) => {
     return (
-    <Glassbg className="w-8/12 mx-auto py-5">
+    <Glassbg className="py-5">
        <form onSubmit={props.searchCity} className="flex items-center justify-center">
         <input type="text" name="city" id="city" placeholder="Enter a city name" 
-        className="appearance-none bg-transparent flex-shrink-0 focus:outline-none focus:bg-transparent border-b border-gray-900 w-6/12 h-10 text-center uppercase placeholder-gray-900 tracking-wider rounded text-2xl" />
+        className="appearance-none bg-transparent flex-shrink-0 focus:outline-none focus:bg-transparent border-b border-gray-900 text-center uppercase placeholder-gray-900 tracking-wider rounded text-2xl" />
        </form>
     </Glassbg>
     )

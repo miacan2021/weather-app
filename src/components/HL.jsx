@@ -14,12 +14,12 @@ const Temp = ({high, low}) => {
     return (
         <Glassbg className="p-5 flex items-center justify-around col-span-1 row-span-1">
             <div className="flex flex-col">
-            <h2 className="text-2xl tracking-wider">HIGH -</h2>
-            <h1 className="text-center text-4xl tracking-wider">{high}°</h1>
+            <h2 className="text-mf lg:text-2xl tracking-wider">HIGH -</h2>
+            <h1 className="text-center text-2xl lg:text-4xl tracking-wider">{high}°</h1>
             </div>
             <div className="flex flex-col items-center">
-            <h2 className="text-2xl tracking-wider">LOW -</h2>
-            <h1 className="text-center text-4xl tracking-wider">{low}°</h1>
+            <h2 className="text:md lg:text-2xl tracking-wider">LOW -</h2>
+            <h1 className="text-center text-2xl lg:text-4xl tracking-wider">{low}°</h1>
             </div>
         </Glassbg>
     )
