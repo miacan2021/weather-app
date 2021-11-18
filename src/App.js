@@ -83,8 +83,6 @@ useEffect(() => {
         :
         <Error />
       }
-      
-     
      </div> 
     </div>
 
