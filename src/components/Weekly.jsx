@@ -51,8 +51,7 @@ const Weekly = (props) => {
     return (
     
       <div className="grid grid-flow-col col-span-2 row-span-2 gap-2 overflow-x-scroll md:overflow-auto mt-2">
-          {week.map((w,i) => {
-            
+          {week.map((w,i) => {    
          const switchIcon = () => {
           switch(w.icon) {
             case '01d': return <D01 key={i+w.icon} className="w-7/12 fill-current" />
@@ -76,11 +75,12 @@ const Weekly = (props) => {
            default : return <D01 key={i+w.icon} className="w-7/12 fill-current" />
       }
   }
-            var time = new Date(w.date*1000);
+            const time = new Date(w.date*1000);
+            const weeklyDate = time.toLocaleDateString().slice(0,5)
             return(
               <div className="flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               {switchIcon()}
-              <p key={w.date+i}>{time.toLocaleDateString().slice(0,5)}</p>
+              <p key={w.date+i}>{weeklyDate}</p>
               <p key={w.temp+i}>{w.temp}°</p>
               <p key={w.weather+i}>{w.weather}</p>
               </div>
