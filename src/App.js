@@ -10,6 +10,7 @@ import Weekly from './components/Weekly';
 import SwitchTheme from './components/SwitchTheme';
 
 function App() {
+
   const [state, setState] = useState({
     temp: '',
     feel:'',
