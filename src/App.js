@@ -23,6 +23,8 @@ function App() {
     lon:'',
     lat:'',
     country:'',
+    timezone:''
+
   })
   const [loading, setLoading] = useState(true)
   const [err, setErr] = useState(false)
@@ -54,6 +56,7 @@ useEffect(() => {
         lon: response.data.coord.lon,
         lat: response.data.coord.lat,
         country: response.data.sys.country,
+        timezone:response.data.timezone
       })
       setLoading(false)
     }).catch((error) => {
@@ -75,7 +78,7 @@ useEffect(() => {
       !err ?
         <>
         <div className="grid grid-col-2 grid-rows-5 w-11/12 md:w-10/12 md:h-5/6 lg:w-7/12 lg:h-4/6 my-6 items-stretch gap-2 justify-items-stretch mx-auto">
-          <Area area={state.cityName} country={state.country} dt={state.dt} timezone={state.timezone} />
+          <Area area={state.cityName} country={state.country} timezone={state.timezone}/>
           <Temp temp={state.temp} feel={state.feel} />
           <Icon num={state.icon} weather={state.weather} />
           <HL high={state.high} low={state.low} />

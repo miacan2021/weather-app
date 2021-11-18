@@ -22,14 +22,12 @@ import {ReactComponent as N50} from '../icons/50n.svg'
 
 const Weekly = (props) => {
     const [week, setWeek] = useState([])
-    
 
     useEffect(() => {
       setWeek([])
       getWeeklyWeather(props.lat, props.lon)
     }, [props])
-
-    
+ 
     const getWeeklyWeather = (la, lo) => {
         const weekly = `https://api.openweathermap.org/data/2.5/onecall?lat=${la}&lon=${lo}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
         axios(weekly).then((res) => {
@@ -75,12 +73,13 @@ const Weekly = (props) => {
            default : return <D01 key={i+w.icon} className="w-7/12 fill-current" />
       }
   }
-            const time = new Date(w.date*1000);
-            const weeklyDate = time.toLocaleDateString('en-US').slice(0,5)
+            const time = new Date(w.date*1000)
+            const month = time.getUTCMonth()+1
+            const day = time.getUTCDate()
             return(
               <div className="flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               {switchIcon()}
-              <p key={w.date+i}>{weeklyDate}</p>
+              <p key={w.date+i}> {month}/{day}</p>
               <p key={w.temp+i}>{w.temp}°</p>
               <p key={w.weather+i}>{w.weather}</p>
               </div>
