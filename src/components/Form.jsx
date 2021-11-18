@@ -1,23 +1,13 @@
 import React from 'react'
-import styled from 'styled-components';
-
-const Glassbg = styled.div`
-background: rgba( 255, 255, 255, 0.3 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9px );
--webkit-backdrop-filter: blur( 9px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-`
 
 const Form = (props) => {
     return (
-    <Glassbg className="py-5">
+    <div className="py-5 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40">
        <form onSubmit={props.searchCity} className="flex items-center justify-center">
         <input type="text" name="city" id="city" placeholder="Enter a city name" 
-        className="appearance-none bg-transparent flex-shrink-0 focus:outline-none focus:bg-transparent border-b border-gray-900 text-center uppercase placeholder-gray-900 tracking-wider rounded text-2xl" />
+        className="appearance-none bg-transparent flex-shrink-0 focus:outline-none focus:bg-transparent border-b border-gray-900 dark:border-gray-50 text-center uppercase placeholder-gray-900 dark:placeholder-gray-50 tracking-wider rounded text-2xl" />
        </form>
-    </Glassbg>
+    </div>
     )
 }
 

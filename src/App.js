@@ -7,7 +7,7 @@ import Temp from './components/Temp';
 import Area from './components/Area';
 import HL from './components/HL';
 import Weekly from './components/Weekly';
-
+import SwitchTheme from './components/SwitchTheme';
 
 function App() {
   const [state, setState] = useState({
@@ -21,9 +21,11 @@ function App() {
     lon:'',
     lat:'',
   })
+
   useEffect(() => {
     getCityWeather('vancouver')
   }, [])
+
  
  const searchCity = (event) => {
     event.preventDefault()
@@ -50,10 +52,10 @@ function App() {
     })
   }
 
-
   return (
-    <div className="h-screen w-screen bg-cover overflow-scroll  bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900" 
+    <div className="h-screen w-screen bg-cover overflow-scroll bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900 dark:text-gray-50" 
     style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
+     <SwitchTheme />
      <div className="max-w-screen-md md:max-w-7xl flex flex-col items-center justify-center m-auto">
      <div className="pt-10 w-full md:w-5/6 lg:w-4/6">
      <Form searchCity={searchCity} />
@@ -69,9 +71,8 @@ function App() {
        )}
      </div>
     
-    
-  
     </div>
+
   );
 }
 

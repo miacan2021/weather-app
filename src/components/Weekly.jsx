@@ -1,14 +1,5 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios';
-import styled from 'styled-components'
-const Glassbg = styled.div`
-background: rgba( 255, 255, 255, 0.3 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 9px );
--webkit-backdrop-filter: blur( 9px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-`
 
 const Weekly = (props) => {
     const [week, setWeek] = useState([])
@@ -44,12 +35,12 @@ const Weekly = (props) => {
             const source = `../icons/${w.icon}.svg`
             var time = new Date(w.date*1000);
             return(
-              <Glassbg className="flex flex-col items-center justify-center p-2" key={i}>
+              <div className="flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               <img key={w.icon+i} src={source} alt="weather icon" className="w-6/12" />
               <p key={w.date+i}>{time.toLocaleDateString().slice(0,5)}</p>
               <p key={w.temp+i}>{w.temp}°</p>
               <p key={w.weather+i}>{w.weather}</p>
-              </Glassbg>
+              </div>
           )})}
       </div>
     )
