@@ -8,9 +8,10 @@ import Area from './components/Area';
 import HL from './components/HL';
 import Weekly from './components/Weekly';
 import SwitchTheme from './components/SwitchTheme';
+import Spiner from './components/Spiner';
+import Error from './components/Error';
 
 function App() {
-
   const [state, setState] = useState({
     temp: '',
     feel:'',
@@ -22,13 +23,16 @@ function App() {
     lon:'',
     lat:'',
   })
+  const [loading, setLoading] = useState(true)
+  const [err, setErr] = useState(false)
 
-  useEffect(() => {
+useEffect(() => {
     getCityWeather('vancouver')
-  }, [])
-
+}, [])
  
  const searchCity = (event) => {
+    setLoading(true)
+    setErr(false)
     event.preventDefault()
     const updateCity = document.querySelector('#city').value
     getCityWeather(updateCity)
@@ -49,7 +53,11 @@ function App() {
         lon: response.data.coord.lon,
         lat: response.data.coord.lat
       })
- 
+      setLoading(false)
+    }).catch((error) => {
+        console.log(error)
+        setLoading(false)
+        setErr(true)
     })
   }
 
@@ -61,7 +69,9 @@ function App() {
      <div className="pt-10 w-full md:w-5/6 lg:w-4/6">
      <Form searchCity={searchCity} />
      </div>
-     {state.cityName && (
+     { loading ? <Spiner /> :
+      !err ?
+        <>
         <div className="grid grid-col-2 grid-rows-5 w-11/12 md:w-10/12 md:h-5/6 lg:w-7/12 lg:h-4/6 my-6 items-stretch gap-2 justify-items-stretch mx-auto">
           <Area area={state.cityName} />
           <Temp temp={state.temp} feel={state.feel} />
@@ -69,9 +79,13 @@ function App() {
           <HL high={state.high} low={state.low} />
           <Weekly lon={state.lon} lat={state.lat} />
         </div>
-       )}
-     </div>
-    
+       </>
+        :
+        <Error />
+      }
+      
+     
+     </div> 
     </div>
 
   );
