@@ -76,7 +76,7 @@ const Weekly = (props) => {
       }
   }
             const time = new Date(w.date*1000);
-            const weeklyDate = time.toLocaleDateString().slice(0,5)
+            const weeklyDate = time.toLocaleDateString('en-US').slice(0,5)
             return(
               <div className="flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               {switchIcon()}
