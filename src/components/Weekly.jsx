@@ -34,7 +34,7 @@ const Weekly = (props) => {
             const month = time.getUTCMonth()+1
             const day = time.getUTCDate()
             return(
-              <div className="flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
+              <div className="mb-2 flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               {chooseIcon(w.icon)}
               <p key={w.date+i}> {month}/{day}</p>
               <p key={w.temp+i}>{w.temp}°</p>

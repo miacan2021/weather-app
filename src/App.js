@@ -68,7 +68,7 @@ useEffect(() => {
 
   return (
     <div className="h-screen w-screen bg-cover overflow-scroll bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900 dark:text-gray-50" 
-    style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName})`}}>
+    style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName}), url(./loading.jpg)`}}>
      <SwitchTheme />
      <div className="max-w-screen-md md:max-w-7xl flex flex-col items-center justify-center m-auto">
      <div className="pt-10 w-full md:w-5/6 lg:w-4/6">
