@@ -28,17 +28,17 @@ const Weekly = (props) => {
       }
     return (
     
-      <div className="grid grid-flow-col col-span-2 row-span-2 gap-2 overflow-x-scroll md:overflow-auto mt-2">
+      <div className="grid grid-flow-col col-span-2 row-span-1 md:row-span-2 gap-2 overflow-x-scroll md:overflow-auto mt-2">
           {week.map((w,i) => {    
             const time = new Date(w.date*1000)
             const month = time.getUTCMonth()+1
             const day = time.getUTCDate()
             return(
-              <div className="mb-2 flex flex-col items-center justify-center p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
+              <div className="mb-0 md:mb-2 flex flex-col items-center justify-around p-4 md:p-2 bg-gray-50 rounded bg-opacity-30 backdrop-filter backdrop-blur-md shadow-md dark:bg-gray-800 dark:bg-opacity-40" key={i}>
               {chooseIcon(w.icon)}
-              <p key={w.date+i}> {month}/{day}</p>
-              <p key={w.temp+i}>{w.temp}°</p>
-              <p key={w.weather+i}>{w.weather}</p>
+              <p key={w.date+i} className="md:text-lg text-sm"> {month}/{day}</p>
+              <p key={w.temp+i} className="md:text-md text-sm">{w.temp}°</p>
+              <p key={w.weather+i} className="md:text-md text-sm">{w.weather}</p>
               </div>
           )})}
       </div>
