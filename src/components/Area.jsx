@@ -1,16 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 
 const Area = ({area, country, timezone}) => {
     const dateData = Date.now() + 1000 * timezone
     const [time, setTime] = useState(new Date(dateData))
-    const month = (time.getUTCMonth()+1).toLocaleString('en-US',{
+    const month = useMemo(() => ((time.getUTCMonth()+1).toLocaleString('en-US',{
         minimumIntegerDigits: 2,
         useGrouping: false
-      })
-    const date = (time.getUTCDate()).toLocaleString('en-US',{
+      })), [time])
+    const date = useMemo(() => ((time.getUTCDate()).toLocaleString('en-US',{
         minimumIntegerDigits: 2,
         useGrouping: false
-      })
+      })), [time])
     const hours = (time.getUTCHours()).toLocaleString('en-US',{
         minimumIntegerDigits: 2,
         useGrouping: false
