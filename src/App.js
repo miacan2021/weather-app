@@ -67,17 +67,17 @@ useEffect(() => {
   }
 
   return (
-    <div className="h-screen w-screen bg-cover overflow-scroll bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900 dark:text-gray-50" 
+    <div className="h-screen w-screen bg-cover overflow-scroll bg-no-repeat bg-fixed object-cover bg-center font-ab text-gray-900 dark:text-gray-50 mx-auto" 
     style={{backgroundImage:`url(https://source.unsplash.com/1600x900/?${state.cityName}), url(./loading.jpg)`}}>
      <SwitchTheme />
-     <div className="max-w-screen-md md:max-w-7xl flex flex-col items-center justify-center m-auto">
-     <div className="pt-10 w-full md:w-5/6 lg:w-4/6">
+     <div className="max-w-screen-sm md:max-w-7xl flex flex-col items-center justify-center mx-auto">
+     <div className="pt-10 w-10/12 md:w-5/6 lg:w-4/6 sm:h-3/ md:h-auto">
      <Form searchCity={searchCity} />
      </div>
      { loading ? <Spiner /> :
       !err ?
         <>
-        <div className="grid grid-col-2 grid-rows-5 w-11/12 md:w-10/12 md:h-5/6 lg:w-7/12 lg:h-4/6 my-6 items-stretch gap-2 justify-items-stretch mx-auto">
+        <div className="grid grid-col-2 grid-rows-4 md:grid-rows-5 w-10/12 h-5/6 md:w-10/12 md:h-4/6 lg:w-7/12 lg:h-4/6 my-6 items-stretch gap-2 justify-items-stretch mx-auto">
           <Area area={state.cityName} country={state.country} timezone={state.timezone}/>
           <Temp temp={state.temp} feel={state.feel} />
           <Icon num={state.icon} weather={state.weather} />
